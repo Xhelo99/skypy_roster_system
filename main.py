@@ -1,16 +1,18 @@
-# This is a sample Python script.
+from src.data_loader import load_all_data
+from src.scheduler import schedule_flights
+from src.exporter import export_roster_to_json
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    # Load
+    flights, crew = load_all_data("data/flights.csv", "data/crew.csv")
 
+    # Schedule
+    roster = schedule_flights(flights, crew)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    # Export
+    os.makedirs("outputs", exist_ok=True)
+    export_roster_to_json(roster, "outputs/roster_output.json")
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    main()
