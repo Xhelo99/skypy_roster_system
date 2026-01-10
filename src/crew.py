@@ -3,6 +3,7 @@ Crew class for SkyPy Crew Rostering System.
 Represents a crew member with their base location and qualifications.
 """
 
+
 class Crew:
     """Represents a crew member who can be assigned to flights."""
     def __init__(self, crew_id: str, home_base: str, qualifications: str):
@@ -31,7 +32,7 @@ class Crew:
         if not qualifications_str:
             return []
 
-        quals = [q.strip() for q in qualifications_str.split(';') if q.strip()]
-        return quals
+        qua = [q.strip() for q in qualifications_str.split(';') if q.strip()]
+        return qua
 
 

@@ -3,11 +3,11 @@ Scheduler for SkyPy Crew Rostering System.
 Automatically assigns flights to crew members while using the validator.
 """
 
-from roster import Roster
-from validator import validate_roster
+from src.roster import Roster
+from src.validator import validate_roster
 
 
-def schedule_flights_minimal(flights, crew_list):
+def schedule_flights(flights, crew_list):
     """
     Automatically assign flights to crew members.
 
@@ -35,9 +35,6 @@ def schedule_flights_minimal(flights, crew_list):
         assigned = False
 
         for crew in crew_list:
-            if flight.aircraft not in crew.qualifications:
-                continue
-
             roster.assign(crew.crew_id, flight)
             is_valid, _ = validate_roster(roster, crew_dict)
 
@@ -51,3 +48,4 @@ def schedule_flights_minimal(flights, crew_list):
             roster.unassigned_flights.append(flight)
 
     return roster
+

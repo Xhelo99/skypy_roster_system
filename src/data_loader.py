@@ -4,7 +4,7 @@ Loads CSV files into Flight and Crew objects.
 """
 
 import csv
-from typing import List, Tuple
+from typing import List
 from src.flight import Flight
 from src.crew import Crew
 
@@ -90,7 +90,7 @@ def load_crew(csv_path: str) -> List[Crew]:
     return crew_list
 
 
-def load_all_data(flights_path: str, crew_path: str) -> Tuple[List[Flight], List[Crew]]:
+def load_all_data(flights_path: str, crew_path: str):
     """
     Load both flights and crew data.
 
