@@ -14,6 +14,7 @@ class Roster:
     """
     def __init__(self):
         self.schedule = {}
+        self.unassigned_flights = []
 
     def assign(self, crew_id, flight):
         if crew_id not in self.schedule:
