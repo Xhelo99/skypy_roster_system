@@ -16,10 +16,6 @@ def validate_roster(roster, crew_dict):
         True if valid, False with error message if invalid
     """
     for crew_id, flights in roster.schedule.items():
-        # Get crew for qualification check
-        if crew_id not in crew_dict:
-            return False, f"Crew {crew_id} not found"
-
         crew = crew_dict[crew_id]
 
         # Check aircraft qualifications for all flights

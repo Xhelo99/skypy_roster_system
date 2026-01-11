@@ -7,7 +7,7 @@ import json
 from src.roster import Roster
 
 
-def export_roster_to_json(roster: Roster, output_path: str) -> None:
+def export_roster_to_json(roster: Roster, output_path: str):
     """
     Export roster to JSON file in the required format.
 
@@ -29,10 +29,10 @@ def export_roster_to_json(roster: Roster, output_path: str) -> None:
     with open(output_path, 'w', encoding='utf-8') as file:
         json.dump(json_data, file, indent=2)
 
-    print(f"✅ Roster exported to: {output_path}")
+    print(f"Roster exported to: {output_path}")
 
 
-def _roster_to_dict(roster: Roster) -> dict:
+def _roster_to_dict(roster):
     """
     Convert Roster object to dictionary matching JSON spec.
 
@@ -48,8 +48,8 @@ def _roster_to_dict(roster: Roster) -> dict:
     for crew_id, flights in roster.schedule.items():
         result[crew_id] = [flight.flight_id for flight in flights]
 
-    # Add unassigned flights (if any)
-    if hasattr(roster, 'unassigned_flights') and roster.unassigned_flights:
+    # Add unassigned flights
+    if roster.unassigned_flights:  # Checks if list is not empty
         result['unassigned'] = [flight.flight_id for flight in roster.unassigned_flights]
 
     return result
