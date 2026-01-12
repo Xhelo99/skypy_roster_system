@@ -9,7 +9,7 @@ from src.flight import Flight
 from src.crew import Crew
 
 
-def load_flights(csv_path: str) -> List[Flight]:
+def load_flights(csv_path: str):
     """
     Load flights from CSV file.
 
@@ -51,7 +51,7 @@ def load_flights(csv_path: str) -> List[Flight]:
     return flights
 
 
-def load_crew(csv_path: str) -> List[Crew]:
+def load_crew(csv_path: str):
     """
     Load crew from CSV file.
 
